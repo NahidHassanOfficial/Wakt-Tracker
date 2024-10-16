@@ -1,0 +1,15 @@
+
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Wakt Tracker",
+  "icons": {
+
+    "256": "icon.png"
+  },
+  "description": "Current salat wakt tracker. It helps to easily get to know of the wakt and remaining time for salat",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["activeTab"]
+}
