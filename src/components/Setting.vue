@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeMount, ref, watch } from 'vue';
 
+//fetch districts before mount
 const districts = ref(null);
 async function fetchDistricts() {
     let response = await fetch('https://bdapis.com/api/v1.2/districts');
@@ -10,15 +11,19 @@ onBeforeMount(() => {
     fetchDistricts();
 })
 
+//disable the button untill any data selected 
+//get location from localstorage and if null then  set it to null
 const isDisabled = ref(true);
 const selectedDistrict = ref(localStorage.getItem('location') || '');
-const buttonText = ref('Save Changes');
+const buttonText = ref('Save Changes'); //set initial button text
 
+//once button is selected district data changed enable button and update button text
 watch(selectedDistrict, (district) => {
     isDisabled.value = !(district !== '');
     buttonText.value = "Save Changes";
 });
 
+//set district data to localstorage
 function updateLocation() {
     localStorage.setItem('location', selectedDistrict.value);
     buttonText.value = "Updated";

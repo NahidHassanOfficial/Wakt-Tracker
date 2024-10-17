@@ -5,6 +5,7 @@ const loading = ref(true);
 const prayerData = ref(null);
 const district = localStorage.getItem('location') || 'Dhaka';
 
+//fetch prayer times data
 async function fetchData() {
   try {
     const response = await fetch(`https://cors-anywhere.herokuapp.com/https://muslimsalat.com/${district}/daily.json`, {
@@ -25,8 +26,10 @@ onBeforeMount(() => {
   fetchData();
 });
 
+//convert string times format to calculatable format and compare
 let nextPrayer;
 function convertAndCompare(timeStr1, timeStr2, index) {
+  //split hour, minute and am/pm
   let [hour1, minute1, period1] = timeStr1.split(/:| /);
   let [hour2, minute2, period2] = timeStr2.split(/:| /);
 
@@ -64,8 +67,10 @@ function convertAndCompare(timeStr1, timeStr2, index) {
   }
 }
 
+// wait for prayerData to be loaded from api and perform search
 const result = ref(null);
 watch(prayerData, (data) => {
+  //prayer wakt pairs to compare
   const itemsList = [
     { currentPrayer: "fajr", nextPrayer: "shurooq" },
     { currentPrayer: "shurooq", nextPrayer: "dhuhr" },
@@ -75,6 +80,7 @@ watch(prayerData, (data) => {
     { currentPrayer: "isha", nextPrayer: "fajr" },
   ];
 
+  //perform search
   for (let i = 0; i < 6; i++) {
     result.value = convertAndCompare(data[itemsList[i].currentPrayer], data[itemsList[i].nextPrayer], i);
     if (result.value === true) {
@@ -84,11 +90,13 @@ watch(prayerData, (data) => {
     else continue;
   }
 
+  //if wakt got as result then dynamically checking remaining time
   if (result.value != null) {
     setInterval(checkRemainingTime, 1000);
   }
 })
 
+//check for remaining times with padStart 2 for double digit
 const remainingTime = ref(null);
 function checkRemainingTime() {
   const timeDiff = Math.max(0, nextPrayer - Date.now());
@@ -99,6 +107,7 @@ function checkRemainingTime() {
   remainingTime.value = `${hours}:${minutes}:${remainingSeconds}`;
 }
 
+//wait untill remainingtime value is updated! then hide loader and display result
 watch(remainingTime, function () {
   loading.value = false;
 })
