@@ -1,29 +1,38 @@
-# Wakt-Tracker
+# Wakt Tracker - Chrome Extension
 
-This template should help get you started developing with Vue 3 in Vite.
+**Wakt Tracker** is a Chrome extension for tracking prayer times, tailored to users in Bangladesh. It provides real-time prayer timing data and dynamic countdowns for upcoming prayers. The extension is powered by Vue.js, styled with Tailwind CSS, and leverages external APIs for accurate data sourcing.
 
-## Recommended IDE Setup
+![Extension Demo GIF](https://github.com/user-attachments/assets/563f5f04-8bf7-45fb-bbd9-97930cd64b70)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Customize configuration
+- **Real-Time Prayer Timings**: Displays the current prayer’s start, end, and remaining time.
+- **Dynamic Countdown**: Continuously updates to show time left until the next prayer.
+- **Location-Based Settings**: Users can select their location from a dropdown list populated with Bangladesh-specific locations.
+- **Persistent Settings**: Location preference is stored in local storage, with a default fallback to Dhaka.
+- **Intuitive UI**: Lightweight, responsive UI with a custom loader animation for smooth data transitions.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Tech Stack
 
-## Project Setup
+- **Vue.js**
+- **Tailwind CSS**
 
-```sh
-npm install
-```
+## API Integrations
 
-### Compile and Hot-Reload for Development
+- **Prayer Times**: [MuslimSalat API](https://muslimsalat.com) for fetching prayer timings, accessed through a proxy ([cors-anywhere](https://cors-anywhere.herokuapp.com)) to handle CORS restrictions.
+- **Bangladesh Location Data**: [bdapis.com](https://bdapis.com) provides the Bangladesh-specific locations used in the settings dropdown.
 
-```sh
-npm run dev
-```
+## Installation
 
-### Compile and Minify for Production
+1. Clone the repository.
+2. Open Chrome and go to `chrome://extensions`.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select the project folder.
 
-```sh
-npm run build
-```
+The extension icon should now appear in the Chrome toolbar.
+
+## Usage
+
+1. Click the Wakt Tracker icon to view the current prayer time and time remaining.
+2. Use the clock icon to access settings and set your location.
+3. Location selection is persistent, defaulting to Dhaka if no custom location is set.
