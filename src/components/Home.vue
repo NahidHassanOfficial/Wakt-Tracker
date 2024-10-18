@@ -127,7 +127,7 @@ watch(remainingTime, function () {
       <template v-else>
         <!-- Prayer Name -->
         <h1 class="text-4xl font-extrabold text-indigo-700 mb-6" v-if="result != null">{{
-          result.currentPrayer }}
+          result.currentPrayer.toUpperCase() }}
         </h1>
         <!-- Time Started and Time Ends -->
         <div class="text-lg text-gray-700 mb-4">
