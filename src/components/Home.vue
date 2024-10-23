@@ -163,7 +163,7 @@ watch(remainingTime, function () {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 210px;
 }
 
 .loading-text {
