@@ -127,14 +127,16 @@ watch(remainingTime, function () {
       <template v-else>
         <!-- Prayer Name -->
         <h1 class="text-4xl font-extrabold text-indigo-700 mb-6" v-if="result != null">{{
-          result.currentPrayer.toUpperCase() }}
+          result.currentPrayer === "shurooq" ? "---" : result.currentPrayer.toUpperCase()
+        }}
         </h1>
         <!-- Time Started and Time Ends -->
         <div class="text-lg text-gray-700 mb-4">
           <p>Time started at: <span class="font-semibold text-gray-900" v-if="result != null">{{
-            prayerData[result.currentPrayer] }}</span></p>
-          <p>Time ends at: <span class="font-semibold text-gray-900" v-if="result != null">{{
-            prayerData[result.nextPrayer] }}</span></p>
+            result.currentPrayer === "shurooq" ? "---" : prayerData[result.currentPrayer] }}</span></p>
+          <p>{{ result.currentPrayer === "shurooq" ? "Next prayer starts at:" : "Time ends at:" }} <span
+              class="font-semibold text-gray-900" v-if="result != null">{{
+                prayerData[result.nextPrayer] }}</span></p>
         </div>
 
         <!-- Remaining Time -->
