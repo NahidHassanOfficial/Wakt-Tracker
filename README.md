@@ -25,14 +25,18 @@
 ## Installation
 
 1. Clone the repository.
-2. Open Chrome and go to `chrome://extensions`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked** and select the project folder.
+2. Run `npm run build`
+3. Open Chrome and go to `chrome://extensions`.
+4. Enable **Developer mode**.
+5. Click **Load unpacked** and select the project folder.
 
 The extension icon should now appear in the Chrome toolbar.
 
 ## Usage
 
 1. Click the Wakt Tracker icon to view the current prayer time and time remaining.
-2. Use the clock icon to access settings and set your location.
-3. Location selection is persistent, defaulting to Dhaka if no custom location is set.
+2. If time not showing then visit ([cors-anywhere](https://cors-anywhere.herokuapp.com)) and click `Request temporary access to the demo server`
+3. Use the clock icon to access settings and set your location.
+4. Location selection is persistent, defaulting to Dhaka if no custom location is set.
+
+![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/NahidHassanOfficial/Wakt-Tracker)
